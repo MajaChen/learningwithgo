@@ -1,11 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"learning/golang"
+)
 
 func main() {
-	var i int = 0
-
-	fmt.Printf("%p\n", &i)
-	fmt.Print(i)
-	
+	golang.Goroutines()
 }
