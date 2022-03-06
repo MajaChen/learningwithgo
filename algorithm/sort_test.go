@@ -75,3 +75,9 @@ func TestHeapSort(t *testing.T) {
 	nums = HeapSort(nums, 8)
 	t.Errorf("nums is %v", nums)
 }
+
+func TestTopK(t *testing.T) {
+	nums := []int{-1, 5, 4, 8, 2, 6, 0, 7}
+	top3 := TopK(nums, 3)
+	t.Errorf("top3 is %v", top3)
+}

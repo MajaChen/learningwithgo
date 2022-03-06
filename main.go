@@ -1,9 +1,7 @@
 package main
 
-import (
-	"learning/golang"
-)
+import "learning/jobhunt"
 
 func main() {
-	golang.Goroutines()
+	jobhunt.LaunchTmp()
 }

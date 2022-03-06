@@ -2,8 +2,8 @@ package algorithm
 
 import "math"
 
-// 堆结点“沉淀”
-// 基于递归
+// 堆结点“沉淀”,基于递归
+// 构建大顶堆
 func heapNodeSink(heap []int, leftBound, rightBound int) {
 	// 叶结点直接返回
 	if leftBound*2 > rightBound {
@@ -33,6 +33,36 @@ func heapNodeSink(heap []int, leftBound, rightBound int) {
 	}
 }
 
+// 堆结点“沉淀”,基于递归
+// 构建小顶堆
+func heapNodeSink_v2(heap []int, leftBound, rightBound int) {
+	// 叶结点直接返回
+	if leftBound*2 > rightBound {
+		return
+	}
+
+	// 非叶结点交换左右子节点的最大值
+	left, right, minIndex := math.MinInt32, math.MinInt32, leftBound*2
+	if leftBound*2 <= rightBound {
+		left = heap[leftBound*2]
+	}
+	if leftBound*2+1 <= rightBound {
+		right = heap[leftBound*2+1]
+	}
+
+	if left > right {
+		minIndex += 1
+	}
+	if heap[minIndex] < heap[leftBound] {
+		swap(minIndex, leftBound, heap)
+	}
+
+	if minIndex%2 == 0 {
+		heapNodeSink_v2(heap, leftBound*2, rightBound)
+	} else {
+		heapNodeSink_v2(heap, leftBound*2+1, rightBound)
+	}
+}
 func buildHeap(nums []int, N int) []int {
 	for left, right := int(N/2), N; left >= 1; left-- {
 		heapNodeSink(nums, left, right)
@@ -83,7 +113,7 @@ func merge(nums []int, left, mid, right int) {
 		j++
 	}
 
-	// 将newNums元素拷贝回原数组
+	// 将newNums元素拷贝回原数组对应的位置
 	for i := 0; i < len(newNums); i++ {
 		nums[left+i] = newNums[i]
 	}
@@ -112,14 +142,16 @@ func findPivot(nums []int, left, right int) ([]int, int) {
 	pivot := nums[left]
 	low, high, pivotIndex := left, right, left
 	for high > low {
-		for ; nums[high] >= pivot && high > low; high-- {
+		for ; high > low && nums[high] >= pivot; high-- {
 		}
 		nums[low] = nums[high]
+		// 下一个可以被填充的位置
 		pivotIndex = high
 
-		for ; nums[low] <= pivot && high > low; low++ {
+		for ; high > low && nums[low] <= pivot; low++ {
 		}
 		nums[high] = nums[low]
+		// 下一个可以被填充的位置
 		pivotIndex = low
 	}
 
@@ -218,4 +250,23 @@ func BucketSort(nums []float32) []float32 {
 		}
 	}
 	return nums
+}
+
+func TopK(nums []int, k int) []int {
+	if k >= len(nums) {
+		return nums
+	}
+
+	arr := make([]int, 1)
+	for index := 1; index < len(nums); index++ {
+		if len(arr) == k+1 {
+			if nums[index] > arr[1] {
+				arr[1] = nums[index]
+				heapNodeSink_v2(arr, 1, k)
+			}
+		} else {
+			arr = append(arr, nums[index])
+		}
+	}
+	return arr
 }

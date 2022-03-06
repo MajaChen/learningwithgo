@@ -10,7 +10,7 @@ type CQueue struct {
 	Output *Stack
 }
 
-func Constructor() CQueue {
+func ConstructCQueue() CQueue {
 	return CQueue{Input: &Stack{elems: make([]interface{}, 0)},
 		Output: &Stack{elems: make([]interface{}, 0)}}
 }
@@ -35,7 +35,7 @@ func (this *CQueue) DeleteHead() int {
 
 /**
  * Your CQueue object will be instantiated and called as such:
- * obj := Constructor();
+ * obj := ConstructCQueue();
  * obj.AppendTail(value);
  * param_2 := obj.DeleteHead();
  */
@@ -379,7 +379,6 @@ func sortAges(ages []int) []int {
 	return ages
 }
 
-
 func minArray(numbers []int) int {
 	l, r := 0, len(numbers)-1
 	for l <= r {
@@ -490,4 +489,3 @@ func printNumbers(n int) []int {
 	}
 	return res
 }
-
