@@ -222,7 +222,7 @@ func optimalBST(p, q []float64, n int) (float64, []string) {
 // 打家劫舍问题
 func rob(nums []int) int {
 
-	if len(nums) <= 0{
+	if len(nums) <= 0 {
 		return 0
 	}
 

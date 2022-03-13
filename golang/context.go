@@ -1,15 +1,17 @@
 package golang
 
-import(
-"context"
-"fmt"
-"math/rand"
-"sync"
-"time"
+import (
+	"context"
+	"fmt"
+	"math/rand"
+	"sync"
+	"time"
 )
 
 type stringType string
+
 const num stringType = "luckynum"
+
 var lock sync.Mutex
 
 func hitBall() {
