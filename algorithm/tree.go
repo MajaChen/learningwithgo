@@ -33,6 +33,10 @@ func (s *Stack) IsEmpty() bool {
 	return len(s.elems) == 0
 }
 
+func (s *Stack) Len() int {
+	return len(s.elems)
+}
+
 func (s *Stack) Pop() interface{} {
 	elem := s.elems[len(s.elems)-1]
 	s.elems = s.elems[:len(s.elems)-1]
@@ -41,6 +45,10 @@ func (s *Stack) Pop() interface{} {
 
 func (s *Stack) Push(elem interface{}) {
 	s.elems = append(s.elems, elem)
+}
+
+func (s *Stack) GetTop() interface{} {
+	return s.elems[len(s.elems)-1]
 }
 
 // 三色标记法，实现二叉树的迭代遍历
@@ -107,7 +115,6 @@ func (q *Queue) Size() int {
 	return len(q.elems)
 }
 
-// TODO 这里采用数组实现队列，可能存在性能问题
 func (q *Queue) Pop() interface{} {
 	elem := q.elems[0]
 	q.elems = q.elems[1:]
@@ -414,7 +421,7 @@ func serilize(root *TreeNode) []string {
 				q.Push(node.Right)
 				tmpRes = append(tmpRes, strconv.Itoa(node.Val))
 			} else {
-				q.Push(np)//此处不能用nil代替，否则类型断言会失败
+				q.Push(np) //此处不能用nil代替，否则类型断言会失败
 				q.Push(np)
 				tmpRes = append(tmpRes, "nil")
 			}
@@ -432,30 +439,30 @@ func serilize(root *TreeNode) []string {
 
 var emptyTreeNodePointer *TreeNode
 
-func buildTreeNode(str string)*TreeNode{
-	if str == "nil"{
+func buildTreeNode(str string) *TreeNode {
+	if str == "nil" {
 		return emptyTreeNodePointer
 	}
-	i,_ := strconv.Atoi(str)
+	i, _ := strconv.Atoi(str)
 	return &TreeNode{Val: i}
 }
 
 //给定二叉树序列化得到的字符串数组，反序列化出该二叉树
-func deserilize(strs []string)*TreeNode{
-	root,nodes := 0,make([]*TreeNode,0,len(strs)+1)
-	for root < len(strs){
+func deserilize(strs []string) *TreeNode {
+	root, nodes := 0, make([]*TreeNode, 0, len(strs)+1)
+	for root < len(strs) {
 		node := buildTreeNode(strs[root])
-		pos := root+1
+		pos := root + 1
 		nodes[pos] = node
-		if (pos)/2 > 0{
+		if (pos)/2 > 0 {
 			p := nodes[(pos)/2]
-			if (pos%2) == 0{
+			if (pos % 2) == 0 {
 				p.Left = node
-			}else{
+			} else {
 				p.Right = node
 			}
-		}		
-	} 
+		}
+	}
 	return nodes[1]
 }
 
@@ -463,48 +470,48 @@ var maxPathSumNum int = math.MinInt32
 
 //局部最大值/向上传递的局部最大值
 func maxPathSumRe(root *TreeNode) int {
-	if root == nil{
+	if root == nil {
 		return 0
 	}
 
 	lval := maxPathSumRe(root.Left)
 	rval := maxPathSumRe(root.Right)
-	val,localmax := root.Val,root.Val
-	if lval >= 0{
-		val += lval 
+	val, localmax := root.Val, root.Val
+	if lval >= 0 {
+		val += lval
 	}
-	if rval >= 0{
+	if rval >= 0 {
 		val += rval
 	}
 
-	if val > maxPathSumNum{
+	if val > maxPathSumNum {
 		maxPathSumNum = val
 	}
 
-	if lval > 0 && lval >= rval{
+	if lval > 0 && lval >= rval {
 		localmax += lval
 	}
 
-	if rval > 0 && rval >= lval{
+	if rval > 0 && rval >= lval {
 		localmax += rval
 	}
 
 	return localmax
 }
 
-func maxPathSum(root *TreeNode) int{
+func maxPathSum(root *TreeNode) int {
 	maxPathSumRe(root)
 	return maxPathSumNum
 }
 
-func combinePaths(pre int,lres [][]int,rres [][]int)[][]int{
-	res := make([][]int,0,len(lres)+len(rres))
-	for _,tmpRes := range lres{
-		tmpRes = append([]int{pre},tmpRes...)
+func combinePaths(pre int, lres [][]int, rres [][]int) [][]int {
+	res := make([][]int, 0, len(lres)+len(rres))
+	for _, tmpRes := range lres {
+		tmpRes = append([]int{pre}, tmpRes...)
 		res = append(res, tmpRes)
 	}
-	for _,tmpRes := range rres{
-		tmpRes = append([]int{pre},tmpRes...)
+	for _, tmpRes := range rres {
+		tmpRes = append([]int{pre}, tmpRes...)
 		res = append(res, tmpRes)
 	}
 	return res
@@ -513,39 +520,39 @@ func combinePaths(pre int,lres [][]int,rres [][]int)[][]int{
 func pathSum(root *TreeNode, targetSum int) [][]int {
 
 	// 返回的res长度为0则表明没有路径
-	res := make([][]int,0)
-	if root == nil{
+	res := make([][]int, 0)
+	if root == nil {
 		return res
 	}
 
-	if root.Left == nil && root.Right == nil && root.Val == targetSum{
-		res = append(res,[]int{root.Val})
+	if root.Left == nil && root.Right == nil && root.Val == targetSum {
+		res = append(res, []int{root.Val})
 		return res
 	}
 
 	targetSum -= root.Val
-	lres := pathSum(root.Left,targetSum)
-	rres := pathSum(root.Right,targetSum)
-	res = combinePaths(root.Val,lres,rres)
+	lres := pathSum(root.Left, targetSum)
+	rres := pathSum(root.Right, targetSum)
+	res = combinePaths(root.Val, lres, rres)
 
-	return res 
+	return res
 }
 
 // 双递归法，第一层递归
 func pathSum_v2(root *TreeNode, sum int) int {
-	if root == nil{
+	if root == nil {
 		return 0
 	}
-	res := pathSum_double(root,sum)
-	res += pathSum_v2(root.Left,sum)
-	res += pathSum_v2(root.Right,sum)
+	res := pathSum_double(root, sum)
+	res += pathSum_v2(root.Left, sum)
+	res += pathSum_v2(root.Right, sum)
 	return res
 }
 
 // 双递归法，第二层递归
 func pathSum_double(root *TreeNode, sum int) int {
-	
-	if root == nil{
+
+	if root == nil {
 		return 0
 	}
 
@@ -554,24 +561,23 @@ func pathSum_double(root *TreeNode, sum int) int {
 	}
 
 	sum -= root.Val
-	return pathSum_double(root.Left,sum) + pathSum_double(root.Right,sum) 
+	return pathSum_double(root.Left, sum) + pathSum_double(root.Right, sum)
 }
 
-func findNodeTilt(root *TreeNode) int{
+func findNodeTilt(root *TreeNode) int {
 
-	lsum,rsum := 0,0
-	if root.Left != nil{
+	lsum, rsum := 0, 0
+	if root.Left != nil {
 		lsum = root.Left.Val
 	}
-	if root.Right != nil{
+	if root.Right != nil {
 		rsum = root.Right.Val
 	}
-	return int(math.Abs(float64(lsum-rsum)))
+	return int(math.Abs(float64(lsum - rsum)))
 }
 
-
 func findTilt(root *TreeNode) int {
-	if root == nil{
+	if root == nil {
 		return 0
 	}
 	tilt := findNodeTilt(root)
@@ -580,23 +586,22 @@ func findTilt(root *TreeNode) int {
 	return tilt
 }
 
-
-func goodNodesRe(root *TreeNode)[]int{
-	gN := make([]int,0)
-	if root == nil{
+func goodNodesRe(root *TreeNode) []int {
+	gN := make([]int, 0)
+	if root == nil {
 		return gN
 	}
 
-	gN = append(gN,goodNodesRe(root.Left)...)
-	gN = append(gN,goodNodesRe(root.Right)...)
+	gN = append(gN, goodNodesRe(root.Left)...)
+	gN = append(gN, goodNodesRe(root.Right)...)
 
-	nGN := make([]int,0,len(gN))
-	for _,node := range gN{
-		if node >= root.Val{
+	nGN := make([]int, 0, len(gN))
+	for _, node := range gN {
+		if node >= root.Val {
 			nGN = append(nGN, node)
 		}
 	}
-	nGN = append(nGN,root.Val)
+	nGN = append(nGN, root.Val)
 	return nGN
 }
 
@@ -604,94 +609,87 @@ func goodNodes(root *TreeNode) int {
 	return len(goodNodesRe(root))
 }
 
-func nums2Int(nums []int)int{
+func nums2Int(nums []int) int {
 	sum := 0
-	for i := 0;i < len(nums);i++{
-		sum += int(math.Pow(float64(2),float64(len(nums)-i-1)))*nums[i]
+	for i := 0; i < len(nums); i++ {
+		sum += int(math.Pow(float64(2), float64(len(nums)-i-1))) * nums[i]
 	}
 	return sum
 }
 
 var sum int = 0
-func sumRootToLeafRe(root *TreeNode,nums []int) {
-	if root == nil{
+
+func sumRootToLeafRe(root *TreeNode, nums []int) {
+	if root == nil {
 		return
 	}
 
-	nums = append(nums,root.Val)
-	if root.Left == nil && root.Right == nil{
+	nums = append(nums, root.Val)
+	if root.Left == nil && root.Right == nil {
 		sum += nums2Int(nums)
 	}
 
-	sumRootToLeafRe(root.Left,nums)
-	sumRootToLeafRe(root.Right,nums)
+	sumRootToLeafRe(root.Left, nums)
+	sumRootToLeafRe(root.Right, nums)
 }
 
 func sumRootToLeaf(root *TreeNode) int {
 	nums := make([]int, 0)
-	sumRootToLeafRe(root,nums)
+	sumRootToLeafRe(root, nums)
 	return sum
 }
 
 // 存在1则返回true，否则返回false
-func removeOneRe(root *TreeNode)bool{
-	if root == nil{
+func removeOneRe(root *TreeNode) bool {
+	if root == nil {
 		return false
 	}
 
-	if root.Val == 1{
+	if root.Val == 1 {
 		return true
 	}
 
 	lflag := removeOneRe(root.Left)
-	if !lflag{
+	if !lflag {
 		root.Left = nil
 	}
 	rflag := removeOneRe(root.Right)
-	if !rflag{
+	if !rflag {
 		root.Right = nil
 	}
 	return lflag || rflag || root.Val == 1
 }
 
-func removeOne(root *TreeNode)*TreeNode{
+func removeOne(root *TreeNode) *TreeNode {
 	//建一个虚拟头结点,统一处理逻辑
-    vRoot := &TreeNode{Val: 0,Left: root}
+	vRoot := &TreeNode{Val: 0, Left: root}
 	removeOneRe(vRoot)
 	return vRoot.Left
 }
 
 // 如果root应该被删除就返回true
-func removeTargetRe(root *TreeNode,target int)bool{
-	if root == nil{
+func removeTargetRe(root *TreeNode, target int) bool {
+	if root == nil {
 		return true
 	}
 
-	var lflag,rflag bool
-	if lflag = removeTargetRe(root.Left,target);lflag{
+	var lflag, rflag bool
+	if lflag = removeTargetRe(root.Left, target); lflag {
 		root.Left = nil
 	}
-	if rflag = removeTargetRe(root.Right,target);rflag{
+	if rflag = removeTargetRe(root.Right, target); rflag {
 		root.Right = nil
 	}
 
-	if lflag && rflag && root.Val == target{
+	if lflag && rflag && root.Val == target {
 		return true
 	}
 	return false
 }
 
-func removeTarget(root *TreeNode,target int)*TreeNode{
+func removeTarget(root *TreeNode, target int) *TreeNode {
 	// 构建虚拟结点统一处理逻辑
-	vRoot := &TreeNode{Val: target,Left: root}
+	vRoot := &TreeNode{Val: target, Left: root}
 	removeOneRe(vRoot)
 	return vRoot.Left
 }
-
-
-
-
-
-
-
-

@@ -1,11 +1,7 @@
 package main
 
-import "fmt"
+import "learning/jobhunt"
 
 func main() {
-	var i int = 0
-
-	fmt.Printf("%p\n", &i)
-	fmt.Print(i)
-	
+	jobhunt.LaunchTmp()
 }

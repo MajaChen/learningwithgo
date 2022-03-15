@@ -1,5 +1,7 @@
 package algorithm
 
+import "math"
+
 func add(a, b int) int {
 	return a + b
 }
@@ -251,7 +253,7 @@ func copyRandomList(head *Node) *Node {
 
 	p, count, nmapping, omapping, nhead := head, 0, make(map[int]*Node), make(map[*Node]int), &Node{}
 	omapping[nil] = -1
-	nmapping[-1] = nil 
+	nmapping[-1] = nil
 	np := nhead
 	for p != nil {
 		np.Next = &Node{Val: p.Val, Next: nil, Random: p.Random}
@@ -292,4 +294,69 @@ func detectCycle(head *ListNode) *ListNode {
 	return nil
 }
 
+func getIntersectionNode(headA, headB *ListNode) *ListNode {
+	if headA == nil || headB == nil {
+		return nil
+	}
+	p, q := headA, headB
 
+	for {
+		if p == nil && q == nil {
+			return nil
+		}
+
+		if p == q {
+			return p
+		}
+
+		if p == nil {
+			p = headB
+		}
+
+		if q == nil {
+			q = headA
+		}
+
+		p = p.Next
+		q = q.Next
+	}
+}
+
+func appendTail(listNode *ListNode, val int) {
+	// 小技巧，可自动获得待插入位置的前一个结点
+	var p *ListNode
+	for p = listNode; p.Next != nil; p = p.Next {
+	}
+	p.Next = &ListNode{Val: val}
+}
+
+func mergeKLists(lists []*ListNode) *ListNode {
+
+	newLists := &ListNode{}
+	p, q := newLists, newLists
+	pointers := make([]*ListNode, 0, len(lists))
+	for _, listNode := range lists {
+		appendTail(listNode, math.MaxInt32)
+		pointers = append(pointers, listNode)
+	}
+
+	for {
+		max, maxIndex := math.MinInt32, -1
+		for index, pointer := range pointers {
+			if pointer.Val >= max {
+				maxIndex = index
+			}
+		}
+		q = p
+		p.Next = pointers[maxIndex]
+		p = p.Next
+
+		pointers[maxIndex] = pointers[maxIndex].Next
+		if pointers[maxIndex] == nil {
+			break
+		}
+	}
+
+	q.Next = nil
+	return newLists.Next
+}

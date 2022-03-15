@@ -5,7 +5,7 @@ import (
 )
 
 func TestCQueue(t *testing.T) {
-	cq := Constructor()
+	cq := ConstructCQueue()
 	cq.AppendTail(1)
 	cq.AppendTail(2)
 	cq.AppendTail(3)
@@ -155,7 +155,3 @@ func TestHammingWeight(t *testing.T) {
 	n := 3
 	hammingWeight2(uint32(n))
 }
-
-
-
-

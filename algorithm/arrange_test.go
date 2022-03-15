@@ -37,34 +37,31 @@ func TestSlice_v2(t *testing.T) {
 		slices[index] = s
 	}
 
-	t.Errorf("slices are %v",slices)
+	t.Errorf("slices are %v", slices)
 }
 
-func TestReward(t *testing.T){
-	candidates := []string{"A","B","C","D","E","F","G","H"}
-	res := arrange(candidates,3,make(map[string]bool))
-	t.Errorf("len of res is %v",len(res))
-	t.Errorf("res is %v",res)
+func TestReward(t *testing.T) {
+	candidates := []string{"A", "B", "C", "D", "E", "F", "G", "H"}
+	res := arrange(candidates, 3, make(map[string]bool))
+	t.Errorf("len of res is %v", len(res))
+	t.Errorf("res is %v", res)
 }
 
-func TestCombineStr(t *testing.T){
-	strs := []string{"A","B","C","D","E","F"}
-	res := combine(strs,3)
-	t.Errorf("len of res is %v",len(res))
-	t.Errorf("res is %v",res)
+func TestCombineStr(t *testing.T) {
+	strs := []string{"A", "B", "C", "D", "E", "F"}
+	res := combine(strs, 3)
+	t.Errorf("len of res is %v", len(res))
+	t.Errorf("res is %v", res)
 }
 
-func TestArrangeNumsNoRe(t *testing.T){
+func TestArrangeNumsNoRe(t *testing.T) {
 	start := time.Now()
 	arrangeNumsNoRe(6)
-	t.Errorf("len of time span is %v",time.Since(start))
+	t.Errorf("len of time span is %v", time.Since(start))
 }
 
 func TestArrangeNums_v2(t *testing.T) {
 	start := time.Now()
 	arrangeNums(4)
-	t.Errorf("len of time span is %v",time.Since(start))
+	t.Errorf("len of time span is %v", time.Since(start))
 }
-
-
-
