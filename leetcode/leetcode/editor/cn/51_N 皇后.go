@@ -20,8 +20,8 @@ func template2String(index int) string {
 
 func solveNQueensRe(n int, row, col, l, r int, queen []string) {
 
-	if n >= row {
-		arr := make([]string, len(queen), len(queen))
+	if row >= n {
+		arr := make([]string, len(queen))
 		copy(arr, queen)
 		queens = append(queens, arr)
 		return
@@ -30,10 +30,10 @@ func solveNQueensRe(n int, row, col, l, r int, queen []string) {
 	bits := (^(col | l | r)) & ((1 << n) - 1)
 	for bits > 0 {
 		p := bits & (-bits)
-		index := n - (int(math.Log(p)/math.Log(2)) + 1)
+		index := n - (int(math.Log(float64(p))/math.Log(2.0)) + 1)
 		queen = append(queen, template2String(index))
 		bits = bits & (bits - 1)
-		totalNQueensRe(n, row+1, col|p, (l|p)<<1, (r|p)>>1)
+		solveNQueensRe(n, row+1, col|p, (l|p)<<1, (r|p)>>1, queen)
 		queen = queen[:len(queen)-1]
 	}
 }

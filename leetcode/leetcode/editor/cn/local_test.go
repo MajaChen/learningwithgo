@@ -3,11 +3,7 @@ package leetcode
 import "testing"
 
 func TestXXX(t *testing.T) {
-	t.Error(minimumEffortPath([][]int{
-		{1, 2, 2},
-		{3, 8, 2},
-		{5, 3, 5},
-	}))
+	t.Error(solveNQueens(4))
 }
 
 func TestMap(t *testing.T) {
