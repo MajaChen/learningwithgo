@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20c9d251-1748-49f0-b57d-86b00119af0f" name="变更" comment="六次提交">
-      <change beforePath="$PROJECT_DIR$/git_test/1.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/git_test/2.go" beforeDir="false" />
+    <list default="true" id="4f075f8f-394e-4992-b486-36506fc700bd" name="Changes" comment="0319">
+      <change beforePath="$PROJECT_DIR$/.idea/leetcode/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/leetcode/editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,16 +20,12 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" url="file:///usr/local/go" />
+  <component name="GOROOT" url="file://D:/Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file:///usr/local/go/src/regexp/regexp.go" root0="SKIP_INSPECTION" />
-    <setting file="file:///usr/local/go/src/runtime/panic.go" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -52,9 +48,28 @@
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.watchers.conflict.with.on.save.actions.check.performed" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/go/falcon/agent" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
   </component>
-  <component name="RunManager" selected="Go 测试.learning/golang/golang 中的 TestMultiGoroutines">
+  <component name="RunManager" selected="Go Test.learning/golang/golang 中的 TestMultiGoroutines">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="learingwithgolang" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="learning" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="learingwithgolang" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="DIRECTORY" />
+      <package value="learning" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
     <configuration name="learning/golang/golang 中的 TestMultiGoroutines" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="learningwithgo" />
       <working_directory value="$PROJECT_DIR$/golang" />
@@ -115,15 +130,13 @@
       <pattern value="^\QTestRegexp13\E$" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Go 测试.learning/golang/golang 中的 TestMultiGoroutines" />
-        <item itemvalue="Go 测试.learning/golang/golang 中的 TestRegexp13" />
-        <item itemvalue="Go 测试.learning/golang/golang 中的 TestRegexp12" />
-        <item itemvalue="Go 测试.learning/golang/golang 中的 TestRegexp11" />
-        <item itemvalue="Go 测试.learning/golang/golang 中的 TestRegexp10" />
-      </list>
-    </recent_temporary>
+    <list>
+      <item itemvalue="Go Test.learning/golang/golang 中的 TestMultiGoroutines" />
+      <item itemvalue="Go Test.learning/golang/golang 中的 TestRegexp10" />
+      <item itemvalue="Go Test.learning/golang/golang 中的 TestRegexp11" />
+      <item itemvalue="Go Test.learning/golang/golang 中的 TestRegexp12" />
+      <item itemvalue="Go Test.learning/golang/golang 中的 TestRegexp13" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +162,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="首次提交" />
@@ -161,5 +175,10 @@
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/learingwithgolang$TestMaxSubArr_in_learning_jobhunt.out" NAME="TestMaxSubArr in learning/jobhunt Coverage Results" MODIFIED="1630245064992" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/learingwithgolang$TestGetPermutation_in_learning_leetcode.out" NAME="TestGetPermutation in learning/leetcode Coverage Results" MODIFIED="1637740145028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/learingwithgolang$TestIsUgly_in_learning_leetcode.out" NAME="TestIsUgly in learning/leetcode Coverage Results" MODIFIED="1639105303800" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

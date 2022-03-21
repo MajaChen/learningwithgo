@@ -311,6 +311,28 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/leetcode/editor/cn/51_N 皇后.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/doc/content/51_N 皇后.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com51" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/51_N 皇后.go" />
+              <option name="titleSlug" value="n-queens" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/leetcode/editor/cn/52_N皇后 II.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/doc/content/52_N皇后 II.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com52" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/52_N皇后 II.go" />
+              <option name="titleSlug" value="n-queens-ii" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/leetcode/editor/cn/575_分糖果.go">
           <value>
             <LeetcodeEditor>
