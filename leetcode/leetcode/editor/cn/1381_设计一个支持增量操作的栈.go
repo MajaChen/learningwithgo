@@ -7,7 +7,7 @@ type CustomStack struct {
 	maxSize int
 }
 
-func Constructor(maxSize int) CustomStack {
+func CustomStackConstructor(maxSize int) CustomStack {
 	return CustomStack{elems: make([]int, 0), maxSize: maxSize}
 }
 

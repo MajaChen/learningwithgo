@@ -13,33 +13,6 @@ type ListNode struct {
  *     Next *ListNode
  * }
  */
-
-type Stack struct {
-	elems []interface{}
-}
-
-func (s *Stack) IsEmpty() bool {
-	return len(s.elems) == 0
-}
-
-func (s *Stack) len() int {
-	return len(s.elems)
-}
-
-func (s *Stack) Pop() interface{} {
-	elem := s.elems[len(s.elems)-1]
-	s.elems = s.elems[:len(s.elems)-1]
-	return elem
-}
-
-func (s *Stack) Push(elem interface{}) {
-	s.elems = append(s.elems, elem)
-}
-
-func (s *Stack) GetTop() interface{} {
-	return s.elems[len(s.elems)-1]
-}
-
 func nextLargerNodes(head *ListNode) []int {
 
 	mapping, stack, nodeCounts, count := make(map[int]int), &Stack{elems: make([]interface{}, 0)}, make(map[int]int), 1

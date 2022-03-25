@@ -1,0 +1,64 @@
+package leetcode
+
+//leetcode submit region begin(Prohibit modification and deletion)
+
+type Stack struct {
+	elems []interface{}
+}
+
+func (s *Stack) IsEmpty() bool {
+	return len(s.elems) == 0
+}
+
+func (s *Stack) Len() int {
+	return len(s.elems)
+}
+
+func (s *Stack) Pop() interface{} {
+	elem := s.elems[len(s.elems)-1]
+	s.elems = s.elems[:len(s.elems)-1]
+	return elem
+}
+
+func (s *Stack) Push(elem interface{}) {
+	s.elems = append(s.elems, elem)
+}
+
+func (s *Stack) GetTop() interface{} {
+	return s.elems[len(s.elems)-1]
+}
+
+type CQueue struct {
+	s1, s2 Stack
+}
+
+func Constructor() CQueue {
+	return CQueue{s1: Stack{}, s2: Stack{}}
+}
+
+func (this *CQueue) AppendTail(value int) {
+	this.s1.Push(value)
+}
+
+func (this *CQueue) DeleteHead() int {
+
+	if this.s1.IsEmpty() && this.s2.IsEmpty() {
+		return -1
+	}
+
+	if this.s2.IsEmpty() {
+		for !this.s1.IsEmpty() {
+			this.s2.Push(this.s1.Pop())
+		}
+	}
+
+	return this.s2.Pop().(int)
+}
+
+/**
+ * Your CQueue object will be instantiated and called as such:
+ * obj := Constructor();
+ * obj.AppendTail(value);
+ * param_2 := obj.DeleteHead();
+ */
+//leetcode submit region end(Prohibit modification and deletion)
