@@ -3,7 +3,7 @@ package leetcode
 import "testing"
 
 func TestXXX(t *testing.T) {
-	t.Error(solveNQueens(4))
+	t.Error(minArray([]int{3, 1, 3}))
 }
 
 func TestMap(t *testing.T) {
