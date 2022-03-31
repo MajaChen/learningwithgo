@@ -9,9 +9,7 @@ func TestXXX(t *testing.T) {
 		[]byte{'S', 'F', 'C', 'S'},
 		[]byte{'A', 'D', 'E', 'E'},
 	}
-	exist(board, "")
-
-	findRepeatNumber([]int{})
+	t.Error(exist(board, "ABCCED"))
 }
 
 func TestMap(t *testing.T) {
