@@ -3,7 +3,15 @@ package leetcode
 import "testing"
 
 func TestXXX(t *testing.T) {
-	t.Error(minArray([]int{3, 1, 3}))
+
+	board := [][]byte{
+		[]byte{'A', 'B', 'C', 'E'},
+		[]byte{'S', 'F', 'C', 'S'},
+		[]byte{'A', 'D', 'E', 'E'},
+	}
+	exist(board, "")
+
+	findRepeatNumber([]int{})
 }
 
 func TestMap(t *testing.T) {
