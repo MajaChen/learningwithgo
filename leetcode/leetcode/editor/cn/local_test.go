@@ -3,7 +3,7 @@ package leetcode
 import "testing"
 
 func TestXXX(t *testing.T) {
-	t.Error(minArray([]int{3, 1, 3}))
+	t.Error(movingCount(3, 2, 17))
 }
 
 func TestMap(t *testing.T) {
