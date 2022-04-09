@@ -2,32 +2,6 @@ package leetcode
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
-type Stack struct {
-	elems []interface{}
-}
-
-func (s *Stack) IsEmpty() bool {
-	return len(s.elems) == 0
-}
-
-func (s *Stack) Len() int {
-	return len(s.elems)
-}
-
-func (s *Stack) Pop() interface{} {
-	elem := s.elems[len(s.elems)-1]
-	s.elems = s.elems[:len(s.elems)-1]
-	return elem
-}
-
-func (s *Stack) Push(elem interface{}) {
-	s.elems = append(s.elems, elem)
-}
-
-func (s *Stack) GetTop() interface{} {
-	return s.elems[len(s.elems)-1]
-}
-
 type CQueue struct {
 	s1, s2 Stack
 }

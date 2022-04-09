@@ -3,7 +3,7 @@ package leetcode
 import "testing"
 
 func TestXXX(t *testing.T) {
-	t.Error(movingCount(3, 2, 17))
+	t.Error(largestRectangleArea([]int{2,4}))
 }
 
 func TestMap(t *testing.T) {
