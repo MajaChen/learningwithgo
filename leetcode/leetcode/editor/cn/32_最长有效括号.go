@@ -1,9 +1,11 @@
 package leetcode
 
+import . "learning/common"
+
 //leetcode submit region begin(Prohibit modification and deletion)
 func longestValidParentheses(s string) int {
 
-	stack, longestLength := Stack{elems: make([]interface{}, 0)}, 0
+	stack, longestLength := Stack{Elems: make([]interface{}, 0)}, 0
 	stack.Push(-1)
 	for i := 0; i < len(s); i++ {
 		if s[i] == 40 {

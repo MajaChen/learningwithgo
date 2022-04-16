@@ -1,10 +1,12 @@
 package leetcode
 
+import . "learning/common"
+
 //leetcode submit region begin(Prohibit modification and deletion)
 
 func largestRectangleArea(heights []int) int {
 
-	stack, largestArea := Stack{elems: make([]interface{}, 0)}, 0
+	stack, largestArea := Stack{Elems: make([]interface{}, 0)}, 0
 	heights = append(heights, 0)
 	for i := 0; i < len(heights); i++ {
 		for !stack.IsEmpty() && heights[stack.GetTop().(int)] > heights[i] {

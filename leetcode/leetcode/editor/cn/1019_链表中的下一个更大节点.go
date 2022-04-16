@@ -1,9 +1,6 @@
 package leetcode
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+import . "learning/common"
 
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
@@ -15,7 +12,7 @@ type ListNode struct {
  */
 func nextLargerNodes(head *ListNode) []int {
 
-	mapping, stack, nodeCounts, count := make(map[int]int), &Stack{elems: make([]interface{}, 0)}, make(map[int]int), 1
+	mapping, stack, nodeCounts, count := make(map[int]int), &Stack{Elems: make([]interface{}, 0)}, make(map[int]int), 1
 	for p := head; p != nil; p = p.Next {
 		mapping[count] = p.Val
 		for !stack.IsEmpty() && mapping[stack.GetTop().(int)] < p.Val {

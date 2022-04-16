@@ -1,5 +1,7 @@
 package leetcode
 
+import . "learning/common"
+
 //leetcode submit region begin(Prohibit modification and deletion)
 
 type CQueue struct {
