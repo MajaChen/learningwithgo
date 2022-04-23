@@ -15,7 +15,6 @@ import "math"
 var maximalPathSum int
 
 func maxPathSumRe(root *TreeNode) int {
-
 	if root == nil {
 		return 0
 	}
@@ -43,7 +42,6 @@ func maxPathSumRe(root *TreeNode) int {
 }
 
 func maxPathSum(root *TreeNode) int {
-
 	maximalPathSum = math.MinInt32
 	maxPathSumRe(root)
 	return maximalPathSum
