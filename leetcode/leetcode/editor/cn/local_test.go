@@ -3,7 +3,19 @@ package leetcode
 import "testing"
 
 func TestXXX(t *testing.T) {
-	t.Error(buildTree([]int{3, 9, 20, 15, 7}, []int{9, 3, 15, 20, 7}))
+	finder := Constructor()
+	finder.AddNum(6)
+	finder.AddNum(10)
+	finder.AddNum(2)
+	finder.AddNum(6)
+	finder.AddNum(5)
+	finder.AddNum(0)
+	finder.AddNum(6)
+	finder.AddNum(3)
+	finder.AddNum(1)
+	finder.AddNum(0)
+	finder.AddNum(0)
+	t.Error(finder.FindMedian())
 }
 
 func TestMap(t *testing.T) {

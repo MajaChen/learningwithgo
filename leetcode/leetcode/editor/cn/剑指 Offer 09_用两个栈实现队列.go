@@ -8,7 +8,7 @@ type CQueue struct {
 	s1, s2 Stack
 }
 
-func Constructor() CQueue {
+func CQueueConstructor() CQueue {
 	return CQueue{s1: Stack{}, s2: Stack{}}
 }
 
@@ -33,7 +33,7 @@ func (this *CQueue) DeleteHead() int {
 
 /**
  * Your CQueue object will be instantiated and called as such:
- * obj := Constructor();
+ * obj := CQueueConstructor();
  * obj.AppendTail(value);
  * param_2 := obj.DeleteHead();
  */
