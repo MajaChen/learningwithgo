@@ -3,7 +3,7 @@ package leetcode
 import "testing"
 
 func TestXXX(t *testing.T) {
-	t.Error(strToInt("-12"))
+	t.Error(minNumber([]int{10, 2}))
 }
 
 func TestMap(t *testing.T) {
