@@ -3,7 +3,7 @@ package leetcode
 import "testing"
 
 func TestXXX(t *testing.T) {
-	t.Error(minNumber([]int{10, 2}))
+	t.Error(validateStackSequences([]int{1, 2, 3, 4, 5}, []int{4, 5, 3, 2, 1}))
 }
 
 func TestMap(t *testing.T) {
