@@ -1,9 +1,23 @@
 package leetcode
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestXXX(t *testing.T) {
-	t.Error(validateStackSequences([]int{1, 2, 3, 4, 5}, []int{4, 5, 3, 2, 1}))
+	s := Constructor([][]int{
+		[]int{-2, -2, 1, 1},
+		[]int{2, 2, 4, 6},
+	})
+	t.Error(s.Pick())
+	t.Error(s.Pick())
+	t.Error(s.Pick())
+	t.Error(s.Pick())
+	t.Error(s.Pick())
+	t.Error(s.Pick())
+	t.Error(s.Pick())
+	t.Error(s.Pick())
+	t.Error(s.Pick())
 }
 
 func TestMap(t *testing.T) {
