@@ -1,12 +1,12 @@
 package leetcode
 
 //leetcode submit region begin(Prohibit modification and deletion)
-var count int
+var counter int
 
 func totalNQueensRe(n int, row, col, l, r int) {
 
 	if row >= n {
-		count++
+		counter++
 		return
 	}
 
@@ -21,9 +21,9 @@ func totalNQueensRe(n int, row, col, l, r int) {
 
 func totalNQueens(n int) int {
 
-	count = 0
+	counter = 0
 	totalNQueensRe(n, 0, 0, 0, 0)
-	return count
+	return counter
 }
 
 //leetcode submit region end(Prohibit modification and deletion)

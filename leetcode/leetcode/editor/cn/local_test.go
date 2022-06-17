@@ -5,25 +5,7 @@ import (
 )
 
 func TestXXX(t *testing.T) {
-	s := Constructor([][]int{
-		[]int{-2, -2, 1, 1},
-		[]int{2, 2, 4, 6},
-	})
-	t.Error(s.Pick())
-	t.Error(s.Pick())
-	t.Error(s.Pick())
-	t.Error(s.Pick())
-	t.Error(s.Pick())
-	t.Error(s.Pick())
-	t.Error(s.Pick())
-	t.Error(s.Pick())
-	t.Error(s.Pick())
-}
-
-func TestMap(t *testing.T) {
-	mapping := make(map[int]bool)
-	mapping[0] = true
-	t.Error(mapping[1])
+	t.Error(findPairs([]int{3, 1, 4, 1, 5}, 2))
 }
 
 func TestSlice(t *testing.T) {
@@ -31,4 +13,11 @@ func TestSlice(t *testing.T) {
 	s = append(s, 1)
 	s = append(s, 2)
 	t.Error(s[1:1])
+}
+
+func TestMap(t *testing.T) {
+	mapping := make(map[int]int)
+	if _, ok := mapping[0]; ok {
+		t.Error("equal")
+	}
 }

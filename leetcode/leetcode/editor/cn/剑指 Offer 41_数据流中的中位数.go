@@ -9,7 +9,7 @@ type MedianFinder struct {
 	n  int
 }
 
-func Constructor() MedianFinder {
+func FinderConstructor() MedianFinder {
 	return MedianFinder{
 		bh: HeapConsturctor(func(x, y int) bool { return x > y }),
 		sh: HeapConsturctor(func(x, y int) bool { return x < y })}
