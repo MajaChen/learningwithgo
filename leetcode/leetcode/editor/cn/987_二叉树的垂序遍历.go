@@ -10,16 +10,16 @@ type TreeNode struct {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
-type Node struct {
+type LeetcodeTreeNode struct {
 	val int
 	row int
 	col int
 }
 
-var colNodesMapping map[int][]*Node
+var colNodesMapping map[int][]*LeetcodeTreeNode
 var maximalCol int
 
-type NodesSlice []*Node
+type NodesSlice []*LeetcodeTreeNode
 
 func (s NodesSlice) Len() int {
 	return len(s)
@@ -69,12 +69,12 @@ func inOrderTraverse(root *TreeNode, row, col int) {
 		return
 	}
 
-	node := &Node{val: root.Val, row: row, col: col}
-	var nodes []*Node
+	node := &LeetcodeTreeNode{val: root.Val, row: row, col: col}
+	var nodes []*LeetcodeTreeNode
 	if _, ok := colNodesMapping[col]; ok {
 		nodes = colNodesMapping[col]
 	} else {
-		nodes = make([]*Node, 0)
+		nodes = make([]*LeetcodeTreeNode, 0)
 	}
 	nodes = append(nodes, node)
 	colNodesMapping[col] = nodes
@@ -85,7 +85,7 @@ func inOrderTraverse(root *TreeNode, row, col int) {
 
 func verticalTraversal(root *TreeNode) [][]int {
 
-	colNodesMapping = make(map[int][]*Node)
+	colNodesMapping = make(map[int][]*LeetcodeTreeNode)
 	colNodesSlice := make([]*ColNodes, 0)
 	inOrderTraverse(root, 0, 0)
 

@@ -4,28 +4,6 @@ package leetcode
 
 var visitedNodes [][]int
 
-type Queue struct {
-	elems []interface{}
-}
-
-func (q *Queue) Size() int {
-	return len(q.elems)
-}
-
-func (q *Queue) Pop() interface{} {
-	elem := q.elems[0]
-	q.elems = q.elems[1:]
-	return elem
-}
-
-func (q *Queue) Push(elem interface{}) {
-	q.elems = append(q.elems, elem)
-}
-
-func (q Queue) IsEmpty() bool {
-	return len(q.elems) == 0
-}
-
 func isOutOfBound(i, j, k int) bool {
 
 	sumi, sumj := 0, 0

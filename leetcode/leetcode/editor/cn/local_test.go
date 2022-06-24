@@ -5,7 +5,7 @@ import (
 )
 
 func TestXXX(t *testing.T) {
-	t.Error(findPairs([]int{3, 1, 4, 1, 5}, 2))
+	t.Error(defangIPaddr("1.1.1.1"))
 }
 
 func TestSlice(t *testing.T) {

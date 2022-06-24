@@ -18,7 +18,7 @@ func min(i, j int) int {
 	}
 }
 
-func insert(intervals [][]int, newInterval []int) [][]int {
+func insertSpan(intervals [][]int, newInterval []int) [][]int {
 
 	if len(intervals) == 0 {
 		return [][]int{newInterval}
