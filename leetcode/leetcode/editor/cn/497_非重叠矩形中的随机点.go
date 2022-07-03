@@ -13,7 +13,7 @@ type Solution struct {
 	sum      int
 }
 
-func Constructor(rects [][]int) Solution {
+func RangeRandConstructor(rects [][]int) Solution {
 	n, counters := len(rects), make([]int, len(rects)+1)
 	for i := 1; i <= n; i++ {
 		counters[i] = counters[i-1] + (rects[i-1][2]-rects[i-1][0]+1)*(rects[i-1][3]-rects[i-1][1]+1)
