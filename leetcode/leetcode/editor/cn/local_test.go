@@ -6,7 +6,7 @@ import (
 )
 
 func TestXXX(t *testing.T) {
-	t.Error(nextGreaterElement(2147483486))
+	t.Error(replaceWords([]string{"cat", "bat", "rat"}, "the cattle was rattled by the battery"))
 }
 
 func TestSlice(t *testing.T) {

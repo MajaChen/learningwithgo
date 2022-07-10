@@ -2,22 +2,6 @@ package leetcode
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
-func max(i, j int) int {
-	if i > j {
-		return i
-	} else {
-		return j
-	}
-}
-
-func min(i, j int) int {
-	if i < j {
-		return i
-	} else {
-		return j
-	}
-}
-
 func insertSpan(intervals [][]int, newInterval []int) [][]int {
 
 	if len(intervals) == 0 {

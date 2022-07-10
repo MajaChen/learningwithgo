@@ -30,7 +30,7 @@ func String(s string) int {
 	return 0
 }
 
-func Constructor() Codec {
+func EncodeConstructor() Codec {
 	return Codec{num2URL: make(map[int]string)}
 }
 

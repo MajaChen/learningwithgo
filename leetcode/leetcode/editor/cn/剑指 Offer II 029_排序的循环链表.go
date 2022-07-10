@@ -7,7 +7,7 @@ type LeetcodeListNode struct {
 	Next *LeetcodeListNode
 }
 
-func insert(head *LeetcodeListNode, insertVal int) *LeetcodeListNode {
+func insertList(head *LeetcodeListNode, insertVal int) *LeetcodeListNode {
 	if head == nil {
 		p := &LeetcodeListNode{Val: insertVal}
 		p.Next = p
