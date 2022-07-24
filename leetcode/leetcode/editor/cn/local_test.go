@@ -1,12 +1,16 @@
 package leetcode
 
 import (
-	"math"
 	"testing"
 )
 
 func TestXXX(t *testing.T) {
-	t.Error(replaceWords([]string{"cat", "bat", "rat"}, "the cattle was rattled by the battery"))
+	t.Error(sequenceReconstruction([]int{1, 2, 3}, [][]int{
+		{1, 2},
+		{1, 3},
+		{2, 3},
+	}))
+
 }
 
 func TestSlice(t *testing.T) {
@@ -24,9 +28,8 @@ func TestMap(t *testing.T) {
 }
 
 func TestMax(t *testing.T) {
-	t.Error(2147483486 > math.MaxInt32)
-	t.Error(2147483648 > math.MaxInt32)
-	var i int64
-	i = 2147483648
-	t.Error(i)
+	m := make(map[int]int)
+	m[2] += 1
+	m[2] += 1
+	t.Error(m)
 }
