@@ -1,6 +1,6 @@
 package leetcode
 
-import "math"
+import ."learning/common"
 
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
@@ -12,34 +12,26 @@ import "math"
  * }
  */
 
-import . "learning/common"
-
-func largestValues(root *TreeNode) []int {
-	res := make([]int, 0)
+func deepestLeavesSum(root *TreeNode) int {
 	if root == nil {
-		return res
+		return 0
 	}
-	var q Queue = Queue{Elems: make([]interface{}, 0)}
+	q := Queue{Elems: make([]interface{}, 0)}
+	sum := 0
 	q.Push(root)
 	for !q.IsEmpty() {
-		size, count, max := q.Size(), 0, math.MinInt32
-		for count < size {
+		sum = 0
+		for i := q.Size(); i > 0; i-- {
 			node := q.Pop().(*TreeNode)
-			if node.Val > max {
-				max = node.Val
-			}
+			sum += node.Val
 			if node.Left != nil {
 				q.Push(node.Left)
 			}
 			if node.Right != nil {
 				q.Push(node.Right)
 			}
-			count++
 		}
-		count = 0
-		res = append(res, max)
 	}
-	return res
+	return sum
 }
-
 //leetcode submit region end(Prohibit modification and deletion)

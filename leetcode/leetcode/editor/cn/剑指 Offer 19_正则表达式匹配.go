@@ -22,7 +22,7 @@ func isMatch(s string, p string) bool {
 						matchMapping[i][j] = matchMapping[i-1][j-1]
 					}
 				} else { // with * spell
-					// * doesn't match
+					// * doesn'typ match
 					if j >= 2 {
 						matchMapping[i][j] = matchMapping[i][j-2]
 					}

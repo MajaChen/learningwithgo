@@ -2,6 +2,8 @@ package leetcode
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
+import . "learning/common"
+
 var visitedNodes [][]int
 
 func isOutOfBound(i, j, k int) bool {

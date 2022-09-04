@@ -2,6 +2,8 @@ package leetcode
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
+import . "learning/common"
+
 func insertSpan(intervals [][]int, newInterval []int) [][]int {
 
 	if len(intervals) == 0 {
@@ -19,7 +21,7 @@ func insertSpan(intervals [][]int, newInterval []int) [][]int {
 			newIntervals = append(newIntervals, interval)
 			continue
 		}
-		newInterval[0], newInterval[1] = min(newInterval[0], interval[0]), max(newInterval[1], interval[1])
+		newInterval[0], newInterval[1] = Min(newInterval[0], interval[0]), Max(newInterval[1], interval[1])
 	}
 
 	if flag {

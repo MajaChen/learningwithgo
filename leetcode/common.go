@@ -91,9 +91,8 @@ func (set *DisjointSet) Find(elem interface{}) interface{} {
 	if parent = set.parents[elem]; parent == elem {
 		return elem
 	}
-	root := set.Find(parent)
-	set.parents[parent] = root
-	return root
+	set.parents[elem] = set.Find(parent)
+	return set.parents[elem]
 }
 
 func (set *DisjointSet) Add(elem, parent interface{}) {

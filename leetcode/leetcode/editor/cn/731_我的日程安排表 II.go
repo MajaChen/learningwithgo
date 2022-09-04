@@ -1,16 +1,18 @@
 package leetcode
 
+import . "learning/common"
+
 //leetcode submit region begin(Prohibit modification and deletion)
 
-type pair struct {
-	max int
+type calendarpair struct {
+	Max int
 	min int
 }
 
-type MyCalendarTwo map[int]pair
+type MyCalendarTwo map[int]calendarpair
 
-func Constructor() MyCalendarTwo {
-	return make(map[int]pair)
+func MyCalendarTwoConstructor() MyCalendarTwo {
+	return make(map[int]calendarpair)
 }
 
 func (c MyCalendarTwo) update(s, e, l, r, v, idx int) {
@@ -20,7 +22,7 @@ func (c MyCalendarTwo) update(s, e, l, r, v, idx int) {
 	if s <= l && e >= r {
 		p := c[idx]
 		p.min += v
-		p.max += v
+		p.Max += v
 		c[idx] = p
 		return
 	}
@@ -28,13 +30,13 @@ func (c MyCalendarTwo) update(s, e, l, r, v, idx int) {
 	c.update(s, e, l, m, v, 2*idx)
 	c.update(s, e, m+1, r, v, 2*idx+1)
 	p := c[idx]
-	p.max = p.min + max(c[2*idx].max, c[2*idx+1].max)
+	p.Max = p.min + Max(c[2*idx].Max, c[2*idx+1].Max)
 	c[idx] = p
 }
 
 func (this *MyCalendarTwo) Book(start int, end int) bool {
 	c := *this
-	if this.update(start, end-1, 0, 1e9, 1, 1); c[1].max >= 3 {
+	if this.update(start, end-1, 0, 1e9, 1, 1); c[1].Max >= 3 {
 		this.update(start, end-1, 0, 1e9, -1, 1)
 		return false
 	}

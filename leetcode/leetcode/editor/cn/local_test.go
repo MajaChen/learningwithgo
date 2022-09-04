@@ -1,23 +1,22 @@
 package leetcode
 
 import (
+	"fmt"
+	"reflect"
 	"testing"
 )
 
 func TestXXX(t *testing.T) {
-	t.Error(sequenceReconstruction([]int{1, 2, 3}, [][]int{
-		{1, 2},
-		{1, 3},
-		{2, 3},
-	}))
-
+	t.Error(groupThePeople([]int{3, 3, 3, 3, 3, 1, 3}))
 }
 
 func TestSlice(t *testing.T) {
-	s := make([]int, 0, 2)
-	s = append(s, 1)
-	s = append(s, 2)
-	t.Error(s[1:1])
+	s1 := []int{1, 2, 3, 4, 5}
+	s2 := s1[0:3]
+
+	s3 := []int{1, 2, 3, 4, 5}
+	s4 := s3[0:3]
+	fmt.Println(reflect.DeepEqual(s2, s4))
 }
 
 func TestMap(t *testing.T) {
