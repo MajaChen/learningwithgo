@@ -25,7 +25,7 @@ func longestLength(nums []int, target int) int {
 	return longestLength
 }
 
-func minOperations(nums []int, x int) int {
+func minOperations2(nums []int, x int) int {
 
 	sum := 0
 	for _, num := range nums {

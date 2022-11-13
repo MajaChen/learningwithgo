@@ -69,7 +69,6 @@ func (set *HeapSet) Pop() int {
 }
 
 func getKthMagicNumber(k int) int {
-
 	mapping := make(map[int]bool)
 	mapping[1] = true
 	set := BuildHeapSet()

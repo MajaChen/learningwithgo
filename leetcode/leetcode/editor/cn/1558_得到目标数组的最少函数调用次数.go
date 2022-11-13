@@ -1,7 +1,7 @@
 package leetcode
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func minOperations2(nums []int) int {
+func minOperations3(nums []int) int {
 
 	addCount, maxMultiCount := 0, 0
 	for i := 0; i < len(nums); i++ {

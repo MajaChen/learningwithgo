@@ -7,7 +7,12 @@ import (
 )
 
 func TestXXX(t *testing.T) {
-	t.Error(groupThePeople([]int{3, 3, 3, 3, 3, 1, 3}))
+	t.Error(eraseOverlapIntervals([][]int{
+		{1, 2},
+		{2, 3},
+		{3, 4},
+		{1, 3},
+	}))
 }
 
 func TestSlice(t *testing.T) {

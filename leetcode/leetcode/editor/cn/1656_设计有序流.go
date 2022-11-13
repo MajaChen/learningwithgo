@@ -6,7 +6,7 @@ type OrderedStream struct {
 	ptr int
 }
 
-func Constructor(n int) OrderedStream {
+func OrderedStreamConstructor(n int) OrderedStream {
 	return OrderedStream{
 		ss:  make([]string, n+1),
 		ptr: 1,
@@ -18,7 +18,8 @@ func (this *OrderedStream) Insert(idKey int, value string) []string {
 	var result []string
 	if this.ss[this.ptr] != "" {
 		var i int
-		for i = this.ptr; i < len(this.ss) && this.ss[i] != ""; i++ {}
+		for i = this.ptr; i < len(this.ss) && this.ss[i] != ""; i++ {
+		}
 		result = this.ss[this.ptr:i]
 		this.ptr = i
 
