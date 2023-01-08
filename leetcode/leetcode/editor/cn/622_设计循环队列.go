@@ -3,10 +3,10 @@ package leetcode
 //leetcode submit region begin(Prohibit modification and deletion)
 type MyCircularQueue struct {
 	arr []int
-	h   int
-	t   int
-	c   int
-	s   int
+	h   int // 头部下标
+	t   int // 尾部下标
+	c   int // 当前元素个数
+	s   int // 容量
 }
 
 func MyCircularQueueConstructor(k int) MyCircularQueue {
