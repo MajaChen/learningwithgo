@@ -7,12 +7,8 @@ import (
 )
 
 func TestXXX(t *testing.T) {
-	t.Error(eraseOverlapIntervals([][]int{
-		{1, 2},
-		{2, 3},
-		{3, 4},
-		{1, 3},
-	}))
+	flag := checkPossibility([]int{3, 4, 1, 2})
+	t.Error(flag)
 }
 
 func TestSlice(t *testing.T) {
