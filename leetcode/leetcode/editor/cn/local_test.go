@@ -7,8 +7,15 @@ import (
 )
 
 func TestXXX(t *testing.T) {
-	flag := checkPossibility([]int{3, 4, 1, 2})
-	t.Error(flag)
+	// [7,0],[4,4],[7,1],[5,0],[6,1],[5,2]
+	reconstructQueue([][]int{
+		{7, 0},
+		{4, 4},
+		{7, 1},
+		{5, 0},
+		{6, 1},
+		{5, 2},
+	})
 }
 
 func TestSlice(t *testing.T) {
