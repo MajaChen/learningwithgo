@@ -7,15 +7,7 @@ import (
 )
 
 func TestXXX(t *testing.T) {
-	// [7,0],[4,4],[7,1],[5,0],[6,1],[5,2]
-	reconstructQueue([][]int{
-		{7, 0},
-		{4, 4},
-		{7, 1},
-		{5, 0},
-		{6, 1},
-		{5, 2},
-	})
+	t.Error(findNthDigit(1000))
 }
 
 func TestSlice(t *testing.T) {

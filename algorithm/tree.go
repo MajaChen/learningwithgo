@@ -341,7 +341,7 @@ func getNodesPerLayer(root *TreeNode) [][]int {
 	if root == nil {
 		return res
 	}
-	var q Queue = Queue{elems: make([]interface{}, 0)}
+	var q Queue = Queue{elems: make([]type_func{}, 0)}
 	q.Push(root)
 	count, tmpRes := 0, make([]int, 0)
 	for !q.IsEmpty() {
