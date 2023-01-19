@@ -7,7 +7,7 @@ import (
 )
 
 func TestXXX(t *testing.T) {
-	t.Error(findNthDigit(1000))
+	t.Error(translateNum(12258))
 }
 
 func TestSlice(t *testing.T) {
