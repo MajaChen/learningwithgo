@@ -7,7 +7,7 @@ import (
 )
 
 func TestXXX(t *testing.T) {
-	t.Error(translateNum(12258))
+	t.Error(nthUglyNumber(3))
 }
 
 func TestSlice(t *testing.T) {
