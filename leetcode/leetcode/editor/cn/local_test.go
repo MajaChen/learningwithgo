@@ -7,7 +7,7 @@ import (
 )
 
 func TestXXX(t *testing.T) {
-	t.Error(nthUglyNumber(3))
+	t.Error(dicesProbability(2))
 }
 
 func TestSlice(t *testing.T) {
