@@ -7,7 +7,7 @@ import (
 )
 
 func TestXXX(t *testing.T) {
-	t.Error(dicesProbability(2))
+	t.Error(cuttingRope(10))
 }
 
 func TestSlice(t *testing.T) {

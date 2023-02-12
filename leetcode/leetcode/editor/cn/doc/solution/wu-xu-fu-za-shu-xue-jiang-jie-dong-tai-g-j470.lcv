@@ -1,0 +1,96 @@
+1. **动态规划**
+
+首先做这道题的时候首先想到的是动态规划的思路，下面简单叙述下思路，剑指offer原文如下：
+![1.jpg](https://pic.leetcode-cn.com/1619856597-QFTYyQ-1.jpg)
+根据书中的思路可以得到，以下c++代码(没有取余操作，这是上一道题的代码))
+**（不要退出！重点在后面！）**
+
+* 
+
+```
+class Solution {
+public:
+    int cuttingRope(int n) {
+        if (n < 4) {
+            return n - 1;
+        }
+        vector<int> products(n + 1, 0);
+        products[1] = 1;
+        products[2] = 2;
+        products[3] = 3;
+        int maxVal = 0;
+        for (int i = 4; i <= n; ++i) {
+            maxVal = 0;
+            for (int j = 1; j <= i / 2; ++j) {
+                maxVal = max(maxVal, products[j] * products[i - j]);
+            }
+            products[i] = maxVal;
+        }
+        return products[n];
+    }
+};
+
+```
+
+这里有个问题刚开始的时候我没明白，当计算 n >= 4 时剪完之后每一小段的最优段长 m 应该是多少，即最优段长 m需要满足 f(m) = max( f(i)×f(m-i) ) < n，就是说对于最优段长不剪就是最优解。代码中给出了这个初始条件，就是 1，2，3。通过验证也确实说明了这点，1 就不用说了肯定不能剪了；2 的话如果剪得话只能是 1、1，由于 1×1<2 所以到 2 也不要再剪了；3 的话可以剪为 1、2，1×2<3, 所以到 3 的时候也不要再剪了；对于4，我们可以发现 2×2<=4， 这时候剪不剪都无所谓；对于5，2×3>5，这时候有必要剪一刀，而且从4开始之后的都有必要剪。
+
+那么问题就来了，我们怎么确定这需不需要剪最后一刀的初始条件即最优段长是多少？不妨设初始条件对应的最优段为 m，剪完一刀后两段为 x、y (x+y=m)。如果这一刀存在那么下式肯定成立。但是按照最优段的定义，这一刀是不存在的，那么我们需要求的最优段的解就是让下式不成立的 m 的取值范围：
+![image.png](https://pic.leetcode-cn.com/1620191365-vOdPyG-image.png)
+
+由于
+![3.png](https://pic.leetcode-cn.com/1619858248-CDjlha-3.png)
+可以得到基本不等式：
+![4.png](https://pic.leetcode-cn.com/1619858324-TlnIhu-4.png)
+那么根据基本不等式可以得到不等式组为
+![5.png](https://pic.leetcode-cn.com/1619858446-xbrTzQ-5.png)
+因为要求上式无解，即要求xy无解，那么必须满足
+![6.png](https://pic.leetcode-cn.com/1619858544-zgaSAm-6.png)
+解得
+![image.png](https://pic.leetcode-cn.com/1619865475-Lnlmtm-image.png)
+所以，我们可以知道在 m < 4 时，剪一刀后的结果 xy 是不会大于 x+y 的，那么剪到的最优段长只能是1、2、3，也就是剪到这些段长的时候就不需要再去剪了！当然如果 n < 4 时，因为题目要求必须剪一刀，所以这种情况一开始就可以判断并返回结果。
+
+2. **贪心算法**
+
+基于之前的分析，我们知道最优段长为1、2、3。那么我们这时候就会有一个想法，这些最优段长里面哪个是最优的？如果每次都去剪这最好的一段，那么一直按照这个逻辑剪下来不就是最优解了，没错这就是贪心算法！
+
+那么1、2、3这三个哪个才是最好的情况呢？我们这么想，如果最后已经剪好了,那么对于原来绳子中的一段为 1 的绳子i长它可能属于最优子段1、2、3的其中一个，比下图所示
+![1.png](https://pic.leetcode-cn.com/1619863484-ppunHW-1.png)
+我们可以定义一个贡献度函数 g，那么第 i 个段长为 1 的绳子的贡献度为
+![2.png](https://pic.leetcode-cn.com/1619863734-yfcIjC-2.png)
+那么最后的剪完所有绳子后的值products(n)为
+![3.png](https://pic.leetcode-cn.com/1619863894-zdUSKo-3.png)
+很显然我们优先选择剪3的子段最优，因为
+![image.png](https://pic.leetcode-cn.com/1619864023-WbzVyI-image.png)
+所以当 n>4 时贪心算法的原则就是剪尽量多的3的最优子段，这样的结果才会达到最优。因为总绳长不一定就是3的倍数，所以最后留下来的结果可能是1或2，那么这时候应该怎么处理呢？是应该直接保留吗？
+
+我们可以看下函数n^(1/n)的图
+![untitled.jpg](https://pic.leetcode-cn.com/1619864421-riOfnR-untitled.jpg)
+![untitled.jpg](https://pic.leetcode-cn.com/1619864105-fSJJcF-untitled.jpg)
+我们可以发现剪出1的结果是最差的，可以说是一种负优化，因为不管多长的绳就算不剪掉或者随便剪最后的products值都要大于等于1。所以要避免剪出1，这时候可以贡献出一个3，这样可以变为4，可以剪出2与2，最终2×2=4 > 1×3=3, 这样就消除了1这个负优化的结果。代码如下(这里进行了取余操作，看见其他同学说计算幂的时候可以使用快速幂，但是我这里没用）：
+**（第一次写这么长的题解，希望大家点个赞鼓励下！谢谢！）**
+
+* 
+
+```
+class Solution {
+public:
+    int cuttingRope(int n) {       
+        if (n <= 3) return n - 1;
+        long ret = 1;
+        if (n % 3 == 1){
+            ret = 4;
+            n = n - 4;
+        }
+        if (n % 3 == 2){
+            ret = 2;
+            n = n - 2;
+        }
+        while (n) {
+            ret = ret * 3 % 1000000007;            
+            n = n - 3;
+        }
+        return (int)ret;
+    }
+};
+```
+
